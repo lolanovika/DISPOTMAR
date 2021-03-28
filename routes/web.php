@@ -23,6 +23,15 @@ Route::post('/proses_login', [App\Http\Controllers\AuthController::class, 'prose
 Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware'=>['auth','CheckRole:0']],function(){
-    Route::get('/dashboard',[App\Http\Controllers\Admin\AdminController::class,'index'])->name('admin');
+    //view dashboard
+    Route::get('/dashboard',[App\Http\Controllers\Admin\AdminController::class,'index'])->name('dashboard');
+    //view artikel
+    Route::get('/artikel',[App\Http\Controllers\Admin\ArtikelController::class,'index'])->name('artikel');
+    Route::post('/artikel/create',[App\Http\Controllers\Admin\ArtikelController::class,'create'])->name('artikel_create');
+    Route::get('/artikel/delete/{id}',[App\Http\Controllers\Admin\ArtikelController::class,'delete'])->name('artikel_delete');
+        //view update artikel
+        Route::get('/artikel/update/{id}', [App\Http\Controllers\Admin\ArtikelController::class, 'update'])->name('artikel_update');
+        Route::post('/artikel/aksi_update/{id}', [App\Http\Controllers\Admin\ArtikelController::class, 'aksi_update'])->name('aksi_update');
+
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -35,6 +35,8 @@ Coded by www.creative-tim.com
 </head>
 
 <body class="">
+  @include('sweetalert::alert')
+  @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9%22"])
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
@@ -53,52 +55,40 @@ Coded by www.creative-tim.com
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
-            <a href="./dashboard.html">
-              <i class="nc-icon nc-bank"></i>
+          <li class="{{ request()->routeIs('dashboard')?'active':'' }} ">
+            <a href="{{ route('dashboard') }}">
+              <i class="nc-icon nc-single-02"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
-            <a href="./icons.html">
-              <i class="nc-icon nc-diamond"></i>
-              <p>Icons</p>
+          <li class="{{ request()->routeIs('artikel')?'active':'' }} ">
+              <a href="{{ route('artikel') }}">
+              <i class="nc-icon nc-paper"></i>
+              <p>Post Artikel</p>
             </a>
           </li>
-          <li>
+          <li class="{{ request()->routeIs('map')?'active':'' }} ">
             <a href="./map.html">
               <i class="nc-icon nc-pin-3"></i>
               <p>Maps</p>
             </a>
           </li>
-          <li>
+          <li class="{{ request()->routeIs('notifikasi')?'active':'' }} ">
             <a href="./notifications.html">
               <i class="nc-icon nc-bell-55"></i>
               <p>Notifications</p>
             </a>
           </li>
-          <li>
+          <li class="{{ request()->routeIs('user')?'active':'' }} ">
             <a href="./user.html">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
             </a>
           </li>
-          <li>
+          <li class="{{ request()->routeIs('artikel')?'active':'' }} ">
             <a href="./tables.html">
               <i class="nc-icon nc-tile-56"></i>
               <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
             </a>
           </li>
         </ul>
@@ -116,7 +106,7 @@ Coded by www.creative-tim.com
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">Admin</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -179,18 +169,9 @@ Coded by www.creative-tim.com
           <div class="row">
             <nav class="footer-nav">
               <ul>
-                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
                 <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
               </ul>
             </nav>
-            <div class="credits ml-auto">
-              <span class="copyright">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-              </span>
-            </div>
           </div>
         </div>
       </footer>
@@ -215,6 +196,12 @@ Coded by www.creative-tim.com
       // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
       demo.initChartsPages();
     });
+  </script>
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script type="text/javascript">
+  tinymce.init({
+    selector: '#mytextarea'
+  });
   </script>
 </body>
 
